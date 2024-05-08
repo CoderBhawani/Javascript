@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hard Game</title>
+<style>
+    body { text-align: center; }
+</style>
+</head>
+<body>
+    <h1>Hard Game</h1>
+    <p>Guess the number between 1 and 100</p>
+    <input type="text" id="userGuess" placeholder="Enter your guess">
+    <button onclick="checkGuess()">Guess</button>
+    <p id="message"></p>
+    <p>Attempts left: <span id="attemptsLeft">5</span></p>
+
+    <script>
+        let secretNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 5;
+
+        function checkGuess() {
+            let userGuess = parseInt(document.getElementById('userGuess').value);
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                document.getElementById('message').innerText = 'Please enter a valid number between 1 and 100.';
+                return;
+            }
+
+            attempts--;
+            document.getElementById('attemptsLeft').innerText = attempts;
+
+            if (userGuess === secretNumber) {
+                document.getElementById('message').innerText = 'Congratulations! You guessed the number correctly.';
+                document.getElementById('userGuess').disabled = true;
+                return;
+            } else if (attempts === 0) {
+                document.getElementById('message').innerText = 'Sorry! You ran out of attempts. The correct number was ' + secretNumber + '.';
+                document.getElementById('userGuess').disabled = true;
+                return;
+            } else if (userGuess < secretNumber) {
+                document.getElementById('message').innerText = 'Try again! The number is higher.';
+            } else {
+                document.getElementById('message').innerText = 'Try again! The number is lower.';
+            }
+
+            document.getElementById('userGuess').value = '';
+        }
+    </script>
+</body>
+</html>
