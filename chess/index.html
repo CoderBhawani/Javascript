@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chess Game</title>
+<style>
+   
+    .board {
+        display: grid;
+        grid-template-columns: repeat(8, 60px);
+        grid-template-rows: repeat(8, 60px);
+        gap: 1px;
+        background-color: #fff;
+    }
+
+    .square {
+        width: 60px;
+        height: 60px;
+        background-color: #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+
+    .white {
+        background-color: #f0d9b5;
+    }
+
+    .black {
+        background-color: #b58863;
+    }
+</style>
+</head>
+<body>
+    <div class="board">
+        <!-- Top row -->
+        <div class="square white">♖</div>
+        <div class="square black">♘</div>
+        <div class="square white">♗</div>
+        <div class="square black">♕</div>
+        <div class="square white">♔</div>
+        <div class="square black">♗</div>
+        <div class="square white">♘</div>
+        <div class="square black">♖</div>
+        <!-- Second row -->
+        <div class="square black">♙</div>
+        <div class="square white">♙</div>
+        <div class="square black">♙</div>
+        <div class="square white">♙</div>
+        <div class="square black">♙</div>
+        <div class="square white">♙</div>
+        <div class="square black">♙</div>
+        <div class="square white">♙</div>
+        <!-- Empty rows for other pieces -->
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <!-- Bottom row -->
+        <div class="square black">♟</div>
+        <div class="square white">♟</div>
+        <div class="square black">♟</div>
+        <div class="square white">♟</div>
+        <div class="square black">♟</div>
+        <div class="square white">♟</div>
+        <div class="square black">♟</div>
+        <div class="square white">♟</div>
+
+         <!-- bottom row -->
+         <div class="square white">♖</div>
+         <div class="square black">♘</div>
+         <div class="square white">♗</div>
+         <div class="square black">♕</div>
+         <div class="square white">♔</div>
+         <div class="square black">♗</div>
+         <div class="square white">♘</div>
+         <div class="square black">♖</div>
+    </div>
+</body>
+</html>

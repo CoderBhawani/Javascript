@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chess Game</title>
+<style>
+    /* CSS styles for the chessboard */
+    .board {
+        display: grid;
+        grid-template-columns: repeat(8, 60px);
+        grid-template-rows: repeat(8, 60px);
+        gap: 1px;
+        background-color: #fff;
+    }
+
+    .square {
+        width: 60px;
+        height: 60px;
+        background-color: #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+
+    .white {
+        background-color: #f0d9b5;
+    }
+
+    .black {
+        background-color: #b58863;
+    }
+
+    .selected {
+        border: 2px solid blue;
+    }
+
+    .legal-move {
+        background-color: yellow;
+    }
+</style>
+</head>
+<body>
+    <div class="board" id="chessBoard">
+        <!-- Chess pieces will be generated here -->
+    </div>
+
+    <script>
+        // Chess piece symbols
+        const pieces = {
+            EMPTY: "",
+            PAWN: "♙",
+            KNIGHT: "♘",
+            BISHOP: "♗",
+            ROOK: "♖",
+            QUEEN: "♕",
+            KING: "♔"
+        };
+
+        // Chessboard representation (initial position)
+        const boardState = [
+            ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"],
+            ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+            ["", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", ""],
+            ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+            ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"]
+        ];
+
+        // Generate the chessboard
+        function createChessBoard() { 
+            const board = document.getElementById("chessBoard");
+            for (let i = 0; i < 8; i++) {
+                
+                for (let j = 0; j < 8; j++) {
+                   const square = document.createElement("div");
+                    square.className = `square ${((i + j) % 2 === 0) ? "white" : "black"}`;
+                    square.textContent = boardState[i][j];
+                    board.appendChild(square);
+                }
+            }
+        }
+
+        // Add event listeners for piece movement
+        document.addEventListener("DOMContentLoaded", () => {
+            createChessBoard();
+
+            // Add event listeners for square clicks
+            document.querySelectorAll(".square").forEach(square => {
+                square.addEventListener("click", handleSquareClick);
+            });
+        });
+
+        // Handle square click event
+        function handleSquareClick(event) {
+            const clickedSquare = event.target;
+            const piece = clickedSquare.textContent;
+            if (piece !== pieces.EMPTY) {
+                // Remove highlighting from previously selected square
+                document.querySelectorAll(".square").forEach(square => {
+                    square.classList.remove("selected");
+                    square.classList.remove("legal-move");
+                });
+                // Highlight the clicked square
+                clickedSquare.classList.add("selected");
+                // Calculate legal moves and highlight them
+                calculateLegalMoves(clickedSquare);
+            }
+        }
+
+        // Calculate legal moves for a piece and highlight them
+        function calculateLegalMoves(square) {
+            const legalMoves = []; // Placeholder logic for legal moves calculation
+            legalMoves.forEach(move => {
+                const [row, col] = move.split("-");
+                const targetSquare = document.querySelector(`.square[data-row='${row}'][data-col='${col}']`);
+                targetSquare.classList.add("legal-move");
+            });
+        }
+    </script>
+</body>
+</html>
